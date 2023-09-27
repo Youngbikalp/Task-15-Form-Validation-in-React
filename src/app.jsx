@@ -1,8 +1,9 @@
 import { useState } from "react";
-import "./App.css";
+import "./app.css";
+import SignUpForm from "./components/signUpForm";
 
 function App() {
-  return <>Hello Welcome to from validation page</>;
+  return <SignUpForm />;
 }
 
 export default App;
