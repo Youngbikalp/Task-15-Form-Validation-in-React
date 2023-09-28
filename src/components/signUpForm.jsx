@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import "../styles/signUpForm.css";
 function SignUpForm() {
-  const [values, setValues] = useState({ password: "", confirmPassword: "" });
+  const [passwordValues, setPasswordValues] = useState({
+    password: "",
+    confirmPassword: "",
+  });
   const [errors, setErrors] = useState({});
 
   //taking an event object as a parameter
@@ -14,24 +17,24 @@ function SignUpForm() {
     //e.target.name is referring to the input field name
     //when onChange event is triggered and handleInput function is called
     //e.target.name within handleInput will be whatever triggered it
-    setValues({ ...values, [name]: value });
+    setPasswordValues({ ...passwordValues, [name]: value });
   };
 
   function validation() {
     let error = {};
     const passwordPattern = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9]).{8,}$/;
 
-    if (values.password === "") {
+    if (passwordValues.password === "") {
       error.password = "Password field cannot be empty.";
-    } else if (!passwordPattern.test(values.password)) {
+    } else if (!passwordPattern.test(passwordValues.password)) {
       error.password =
         "Your password must be at least 8 minimum characters and " +
         "contain 1 upper case, number and special character.";
     }
 
     if (
-      values.confirmPassword === "" ||
-      values.confirmPassword !== values.password
+      passwordValues.confirmPassword === "" ||
+      passwordValues.confirmPassword !== passwordValues.password
     ) {
       error.confirmPassword = "Your password does not match";
     }
