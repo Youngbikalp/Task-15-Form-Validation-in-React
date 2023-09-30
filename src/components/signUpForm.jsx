@@ -1,48 +1,46 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/signUpForm.css";
 function SignUpForm() {
+  const [errors, setErrors] = useState("");
   return (
     <div className="signUp-container">
       <div className="form-group">
         <h2 className="signUp">Sign Up Page</h2>
         <form>
-          <label htmlFor="fullName">Full Name</label>
+          <label for="fullName">Full Name</label>
           <input
             placeholder="Full Name"
             type="text"
             id="fullName"
             name="fullName"
-            required
+            
           />
+          <div fullname="errors">
+            Your need to enter your full name!
+          </div>
+
           <br />
-          <label htmlFor="email">Email</label>
-          <input
-            placeholder="Email"
-            type="email"
-            id="email"
-            name="email"
-            required
-          />
+          <label for="email">Email</label>
+          <input placeholder="Email" type="email" id="email" name="email" />
           <br />
-          <label htmlFor="password">Password</label>
+          <label for="password">Password</label>
           <input
             placeholder="Password"
             type="password"
             id="password"
             name="email"
-            required
-          />{" "}
+          />
           <br />
-          <label htmlFor="confirm-pass">Confirm Password</label>
+          <label for="confirm-pass">Confirm Password</label>
           <input
             placeholder="confirm-password"
             type="password"
             id="confirm-pass"
             name="email"
-            required
+
           />
         </form>
-      </div>{" "}
+      </div>
       <br />
     </div>
   );

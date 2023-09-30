@@ -3,7 +3,7 @@
   padding: 0;
 }
 
-html,
+
 body {
-  background-color: hsl(204, 8%, 21%);
+  background-color: rgba(0, 0, 0, 0.925)
 }
