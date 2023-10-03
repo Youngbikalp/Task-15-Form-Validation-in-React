@@ -2,23 +2,20 @@ import React, { useState } from "react";
 import "../styles/signUpForm.css";
 function SignUpForm() {
   const [errors, setErrors] = useState({});
-  const [stateName, setStateName] = useState({fullName: ""})
+  const [stateName, setStateName] = useState({ fullName: "" });
   const handleInput = (e) => {
-    setStateName({...stateName, [e.target.name] : e.target.value})
-
-  }
+    setStateName({ ...stateName, [e.target.name]: e.target.value });
+  };
   function formSubmit(e) {
-    e.preventDefault() 
-    setErrors(formValidation()) 
-    
-  } 
+    e.preventDefault();
+    setErrors(formValidation());
+  }
   function formValidation() {
-
-    let error = {}
-    if(stateName.fullName === "") {
-      error.fullName="name field cannot be empty"
+    let error = {};
+    if (stateName.fullName === "") {
+      error.fullName = "name field cannot be empty";
     }
-
+    return error;
   }
   return (
     <div className="signUp-container">
@@ -27,17 +24,14 @@ function SignUpForm() {
         <form onSubmit={formSubmit}>
           <label for="fullName">Full Name</label>
           <input
-          onChange ={handleInput}
+            onChange={handleInput}
             placeholder="Full Name"
             type="text"
             id="fullName"
             name="fullName"
-            
           />
-        
-        {errors.fullName && <p>{errors.fullName}</p>}
 
-          
+          {errors.fullName && <p>{errors.fullName}</p>}
 
           <br />
           <label for="email">Email</label>
@@ -57,7 +51,6 @@ function SignUpForm() {
             type="password"
             id="confirm-pass"
             name="email"
-
           />
           <button>SignUp</button>
         </form>
