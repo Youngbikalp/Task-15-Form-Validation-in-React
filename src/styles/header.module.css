@@ -1,0 +1,11 @@
+.header {
+  background: rgba(22, 43, 57, 1);
+  color: rgba(255, 255, 255, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100;
+  height: 63px;
+  top: 28px;
+  left: 733px;
+}

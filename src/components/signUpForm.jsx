@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "../styles/signUpForm.css";
 function SignUpForm() {
   const [values, setValues] = useState({
+    fullName: "",
+    email: "",
     password: "",
     confirmPassword: "",
   });
@@ -23,6 +25,17 @@ function SignUpForm() {
   function validation() {
     let error = {};
     const passwordPattern = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9]).{8,}$/;
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (values.fullName === "") {
+      error.fullName = "Name field cannot be empty";
+    }
+
+    if (values.email === "") {
+      error.email = "Email field cannot be empty";
+    } else if (!emailPattern.test(values.email)) {
+      error.email = "Please enter a valid email address";
+    }
 
     if (values.password === "") {
       error.password = "Password field cannot be empty.";
@@ -58,6 +71,7 @@ function SignUpForm() {
           <div className="labelAndInput">
             <label htmlFor="fullName">Full Name</label>
             <input
+              onChange={handleInput}
               placeholder="Full Name"
               type="text"
               id="fullName"
@@ -65,9 +79,11 @@ function SignUpForm() {
               required
             />
           </div>
+          {errors.fullName && <p className="error">{errors.fullName}</p>}
           <div className="labelAndInput">
             <label htmlFor="email">Email</label>
             <input
+              onChange={handleInput}
               placeholder="Email"
               type="email"
               id="email"
@@ -75,6 +91,7 @@ function SignUpForm() {
               required
             />
           </div>
+          {errors.email && <p className="error">{errors.email}</p>}
           <div className="labelAndInput">
             <label htmlFor="password">Password</label>
             <input
